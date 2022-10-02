@@ -6,3 +6,6 @@ const ws= fs.createWriteStream(path.join(__dirname,'files','newLorem.txt'));
 //     ws.write(dataChunk);
 // })
 rs.pipe(ws)
+const bx=fs.createReadStream(path.join(__dirname,'files','newLorem.txt'),{encoding:'utf8'})
+const  vb=fs.createWriteStream(path.join(__dirname,'files','test.txt'))
+bx.pipe(vb)
