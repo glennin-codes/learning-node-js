@@ -5,7 +5,12 @@ const fileops=async()=>{
     try{
         const newData=await fsPromise.readFile(path.join(__dirname,'files','lorem.text'),'utf8')
         console.log(newData);
+        await fsPromise.unlink(path.join(__dirname,"files","glenlinda.txt"))
         await fsPromise.writeFile(path.join(__dirname,'files','promiseWrite.txt'),newData)
+        await fsPromise.appendFile(path.join(__dirname,'files','promiseWrite.txt'),"\n\n i have got a few ideas in node")
+        await fsPromise.rename(path.join(__dirname,'files','promiseWrite.txt'),path.join(__dirname,'files','world.txt'))
+        const data= await fsPromise.readFile(path.join(__dirname,'files','world.txt'),'utf8')
+        console.log(data);
     }
     catch (err){
       console.error( err);
